@@ -77,6 +77,11 @@ extern int set_ch_cnt(CHANNEL_CNT *ch_cnt);
 extern void print_channel_cnt(FILE *fp);
 extern void print_channel_info(FILE *fp, CHANNEL_INFO *ch_info);
 
+
+#define trim(buf, ...)  \
+			rtrim(ltrim(buf, __VA_ARGS__), __VA_ARGS__);
+
+
 #define MSG_OUTPUT(out, ...) { \
 							switch(out) { \
 							case CH_LOG_OFF: \

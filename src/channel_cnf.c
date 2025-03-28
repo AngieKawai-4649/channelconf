@@ -179,8 +179,7 @@ static int set_channel_info( char *buf, CHANNEL_INFO *ch_info)
 	memset(ch_info, '\0', sizeof(CHANNEL_INFO));
 
 	// CH
-	cnf[0] = ltrim(cnf[0], 4, ' ', '\t', '\r', '\n');
-	cnf[0] = rtrim(cnf[0], 4, ' ', '\t', '\r', '\n');
+	cnf[0] = trim(cnf[0], 4, ' ', '\t', '\r', '\n');
 	strcpy(ch_info->channel_key, cnf[0]);
 
 	// tuning space
@@ -222,38 +221,31 @@ static int set_channel_info( char *buf, CHANNEL_INFO *ch_info)
 	}
 
 	// PT-CH
-	cnf[1] = ltrim(cnf[1], 4, ' ', '\t', '\r', '\n');
-	cnf[1] = rtrim(cnf[1], 4, ' ', '\t', '\r', '\n');
+	cnf[1] = trim(cnf[1], 4, ' ', '\t', '\r', '\n');
 	ch_info->pt_ch = strtoul(cnf[1], NULL, 0);
 
 	// FREQ
-	cnf[2] = ltrim(cnf[2], 4, ' ', '\t', '\r', '\n');
-	cnf[2] = rtrim(cnf[2], 4, ' ', '\t', '\r', '\n');
+	cnf[2] = trim(cnf[2], 4, ' ', '\t', '\r', '\n');
 	ch_info->freq = (uint32_t)strtod(cnf[2], NULL) * 1000;
 
 	// SID
-	cnf[3] = ltrim(cnf[3], 4, ' ', '\t', '\r', '\n');
-	cnf[3] = rtrim(cnf[3], 4, ' ', '\t', '\r', '\n');
+	cnf[3] = trim(cnf[3], 4, ' ', '\t', '\r', '\n');
 	ch_info->sid = strtoul(cnf[3], NULL, 0);
 
 	// TSID
-	cnf[4] = ltrim(cnf[4], 4, ' ', '\t', '\r', '\n');
-	cnf[4] = rtrim(cnf[4], 4, ' ', '\t', '\r', '\n');
+	cnf[4] = trim(cnf[4], 4, ' ', '\t', '\r', '\n');
 	ch_info->tsid = strtoul(cnf[4], NULL, 0);
 
 	// VIEW
-	cnf[5] = ltrim(cnf[5], 4, ' ', '\t', '\r', '\n');
-	cnf[5] = rtrim(cnf[5], 4, ' ', '\t', '\r', '\n');
+	cnf[5] = trim(cnf[5], 4, ' ', '\t', '\r', '\n');
 	ch_info->view = strtoul(cnf[5], NULL, 0);
 
 	// MIRAKURUN
-	cnf[6] = ltrim(cnf[6], 4, ' ', '\t', '\r', '\n');
-	cnf[6] = rtrim(cnf[6], 4, ' ', '\t', '\r', '\n');
+	cnf[6] = trim(cnf[6], 4, ' ', '\t', '\r', '\n');
 	ch_info->mirakurun = strtoul(cnf[6], NULL, 0);
 
 	// NAME
-	cnf[7] = ltrim(cnf[7], 5, ' ', '"', '\t', '\r', '\n');
-	cnf[7] = rtrim(cnf[7], 5, ' ', '"', '\t', '\r', '\n');
+	cnf[7] = trim(cnf[7], 5, ' ', '"', '\t', '\r', '\n');
 	strcpy(ch_info->ch_name, cnf[7]);
 
 	return(1);
@@ -317,8 +309,7 @@ int read_ch_cnt(CHANNEL_CNT *ch_cnt)
 	memset(ch_cnt, '\0', sizeof(CHANNEL_CNT)*4);
 	char *cp;
 	while(fgets(read_buf, BUFSIZE, fp ) != NULL){
-		cp = ltrim(read_buf, 4, ' ', '\t', '\r', '\n');
-		cp = rtrim(cp, 4, ' ', '\t', '\r', '\n');
+		cp = trim(read_buf, 4, ' ', '\t', '\r', '\n');
 		cp = comment_cut(cp, ';');
 		if(*cp!='\0'){
 
@@ -375,8 +366,7 @@ int read_ch_info()
 	}
 	char *cp;
 	while(fgets(read_buf, BUFSIZE, fp ) != NULL){
-		cp = ltrim(read_buf, 4, ' ', '\t', '\r', '\n');
-		cp = rtrim(cp, 4, ' ', '\t', '\r', '\n');
+		cp = trim(read_buf, 4, ' ', '\t', '\r', '\n');
 		cp = comment_cut(cp, ';');
 		if(*cp!='\0'){
 
