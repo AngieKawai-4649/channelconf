@@ -38,7 +38,7 @@ install: uninstall
 	install -m 644 -D $(HEADER) $(PREFIX)/include/channelcnf/$(HEADER)
 
 $(TARGETCHTOOL): $(OBJCHTOOL)
-	$(CC) -o $@ $^ -Wl,-rpath '$$ORIGIN' $(TARGETLIB) $(LIBS)
+	$(CC) -o $@ $^ -Wl,-rpath,'$$ORIGIN' $(TARGETLIB) $(LIBS)
 
 $(TARGETSEMTOOL): $(OBJSEMTOOL)
 	$(CC) -o $@ $^ $(LIBS)
