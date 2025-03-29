@@ -8,7 +8,7 @@
 
 void print_warn()
 {
-	fprintf(stderr, "ch_tool [option]\n");
+	fprintf(stderr, "chtool [option]\n");
 	fprintf(stderr, "-c : channel.cnfを読み込み共有メモリを割り付けデータを展開する\n");
 	fprintf(stderr, "     既に割り付けられていてchannel.cnfの内容とサイズが異なる場合\n");
 	fprintf(stderr, "     削除して再割り当てする\n");
@@ -237,7 +237,6 @@ static void shm_print(FILE *fp)
 		if(search_tuning_space(SPI_UHF, i, &w) == CH_RETURN_FOUND){
 			print_channel_info(fp, &w);
 		}else{
-			printf("search_tuning_space() NOT FOUND [%u]\n", i);
 			break;
 		}
 	}
@@ -247,7 +246,6 @@ static void shm_print(FILE *fp)
 		if(search_tuning_space(SPI_CATV, i, &w) == CH_RETURN_FOUND){
 			print_channel_info(fp, &w);
 		}else{
-			printf("search_tuning_space() NOT FOUND [%u]\n", i);
 			break;
 		}
 	}
@@ -256,7 +254,6 @@ static void shm_print(FILE *fp)
 		if(search_tuning_space(SPI_BS, i, &w) == CH_RETURN_FOUND){
 			print_channel_info(fp, &w);
 		}else{
-			printf("search_tuning_space() NOT FOUND [%u]\n", i);
 			break;
 		}
 	}
@@ -265,7 +262,6 @@ static void shm_print(FILE *fp)
 		if(search_tuning_space(SPI_CS, i, &w) == CH_RETURN_FOUND){
 			print_channel_info(fp, &w);
 		}else{
-			printf("search_tuning_space() NOT FOUND [%u]\n", i);
 			break;
 		}
 	}

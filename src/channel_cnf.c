@@ -134,7 +134,7 @@ void print_channel_cnt(FILE *fp)
 	fprintf(fp, "地デジ cnt : %u  offset %u\n", ch_cnt->cnt, ch_cnt->offset);
 	fprintf(fp, "CATV   cnt : %u  offset %u\n", (ch_cnt+1)->cnt, (ch_cnt+1)->offset);
 	fprintf(fp, "BS     cnt : %u  offset %u\n", (ch_cnt+2)->cnt, (ch_cnt+2)->offset);
-	fprintf(fp, "CATV   cnt : %u  offset %u\n", (ch_cnt+3)->cnt, (ch_cnt+3)->offset);
+	fprintf(fp, "CS     cnt : %u  offset %u\n", (ch_cnt+3)->cnt, (ch_cnt+3)->offset);
 	semaphore_lock(SEMAPHORE_UNLOCK);
 }
 
