@@ -226,7 +226,7 @@ static int set_channel_info( char *buf, CHANNEL_INFO *ch_info)
 
 	// FREQ
 	cnf[2] = trim(cnf[2], 4, ' ', '\t', '\r', '\n');
-	ch_info->freq = (uint32_t)strtod(cnf[2], NULL) * 1000;
+	ch_info->freq = (uint32_t)(strtod(cnf[2], NULL) * 1000);
 
 	// SID
 	cnf[3] = trim(cnf[3], 4, ' ', '\t', '\r', '\n');
