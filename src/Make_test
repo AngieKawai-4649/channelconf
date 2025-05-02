@@ -1,0 +1,41 @@
+
+CXX = g++
+CC	= gcc
+CFLAGS	= -O2 -Wall -pthread -D_LARGEFILE_SOURCE
+CXXFLAGS = -O2 -Wall -pthread -D_LARGEFILE_SOURCE
+OBJS	= test_main.o channel_cnf.o
+
+LIBS	+= -lpthread
+TARGET	= test
+CONF = channel.cnf
+PREFIX = /usr/local
+
+ifeq ($(shell getconf LONG_BIT),32)
+CFLAGS	+= -D_FILE_OFFSET_BITS=64
+endif
+
+all: $(TARGET)
+
+clean:
+	rm -f $(OBJS) $(TARGET)
+
+uninstall:
+	rm -vf $(PREFIX)/bin/$(TARGET)
+	rm -vf $(PREFIX)/bin/$(CONF)
+
+install: uninstall
+	install -m 755 $(TARGET) $(PREFIX)/bin
+	install -m 644 $(CONF) $(PREFIX)/bin
+
+$(TARGET): $(OBJS)
+	$(CC) -o $(TARGET) $(OBJS) $(LIBS)
+
+depend:
+	$(CC) -MM $(OBJS:.o=.c) > Makefile.dep
+ifdef BUILT-IN
+	$(CC) -MM $(B25_OBJS_EXTC:.o=.c) >> Makefile.dep
+	$(CC) -MM $(B25_OBJS_EXTP:.o=.cpp) >> Makefile.dep
+endif
+
+-include Makefile.dep
+

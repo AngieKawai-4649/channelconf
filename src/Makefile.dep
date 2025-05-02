@@ -1,0 +1,3 @@
+channel_cnf.o: channel_cnf.c channel_cnf.h
+chtool.o: chtool.c channel_cnf.h
+semtool.o: semtool.c channel_cnf.h
