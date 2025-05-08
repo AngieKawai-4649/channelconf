@@ -47,39 +47,37 @@ export CHANNELCONFKEY=0x777777
 Dockerで運用時、ゲストOS（コンテナ）の共有メモリ、セマフォを使用するとコンテナにログインしてchtoolを実行することになり不便なので  
 ホストOSの共有メモリ、セマフォを使用するようにコンテナを作成することを推奨  
 
-docker-compose.yml 例  
-#
-services:  
-    mirakurun:  
-        image: mirakurun:3.9.0-rc.4.mod  
-        container_name: Mirakurun  
-        cap_add:  
-            - SYS_ADMIN  
-            - SYS_NICE  
-        ports:  
-            - "40772:40772"  
-            - "9229:9229"  
-        volumes:  
-            - ../Mirakurun/bind/run/:/var/run/  
-            - ../Mirakurun/bind/opt/:/opt/  
-            - ../Mirakurun/bind/config/:/app-config/  
-            - ../Mirakurun/bind/data/:/app-data/  
-        environment:  
-            TZ: "Asia/Tokyo"  
-        devices:  
-            - /dev/bus:/dev/bus  
-            - /dev/FSUSB2N_1:/dev/FSUSB2N_1  
-            - /dev/FSUSB2N_2:/dev/FSUSB2N_2  
-            - /dev/SANPAKUN_1:/dev/SANPAKUN_1  
-            - /dev/SANPAKUN_2:/dev/SANPAKUN_2  
-#        restart: always  
-        logging:  
-            driver: json-file  
-            options:  
-                max-file: "1"  
-                max-size: 10m  
-        ipc: host       <--------これを入れる  
-
+## docker-compose.yml 例
+    services:
+        mirakurun:
+            image: mirakurun:3.9.0-rc.4.mod
+            container_name: Mirakurun
+            cap_add:
+                - SYS_ADMIN
+                - SYS_NICE
+            ports:
+                - "40772:40772"
+                - "9229:9229"
+            volumes:
+                - ../Mirakurun/bind/run/:/var/run/
+                - ../Mirakurun/bind/opt/:/opt/
+                - ../Mirakurun/bind/config/:/app-config/
+                - ../Mirakurun/bind/data/:/app-data/
+            environment:
+                TZ: "Asia/Tokyo"
+            devices:
+                - /dev/bus:/dev/bus
+                - /dev/FSUSB2N_1:/dev/FSUSB2N_1
+                - /dev/FSUSB2N_2:/dev/FSUSB2N_2
+                - /dev/SANPAKUN_1:/dev/SANPAKUN_1
+                - /dev/SANPAKUN_2:/dev/SANPAKUN_2
+            restart: always
+            logging:
+                driver: json-file
+                options:
+                    max-file: "1"
+                    max-size: 10m
+            ipc: host       <--------これを入れる
 ## ビルド
 $ git clone https://github.com/AngieKawai-4649/channelconf.git  
 $ cd channelconf  
