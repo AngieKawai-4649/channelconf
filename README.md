@@ -20,21 +20,26 @@ Linux用チューナーアプリケーションプログラムを直すことな
    パフォーマンスを考慮すればchtoolで予め割り付けた方が良い)  
 4. チャンネル情報変更時はchtoolを使用しMirakurun channels.ymlを生成し所定のディレクトリに配置する
 
-chtool [option]  
+### chtool [option]
 -c : channel.cnfを読み込み共有メモリを割り付けデータを展開する  
-      既に割り付けられていてchannel.cnfの内容とサイズが異なる場合  
-      削除して再割り当てする  
+　　既に割り付けられていてchannel.cnfの内容とサイズが異なる場合  
+　　削除して再割り当てする  
 -d : 共有メモリを削除する  
 -m : 共有メモリからMirakurun channels.yml フォーマットで出力する  
 -p : 共有メモリからVLC(SMPLAYER)プレイリストフォーマットで出力する  
 -v : 共有メモリ内容を表示する  
 -h : 使い方を表示する  
 
-semtool [option]  
+### semtool [option]  
 -c : セマフォを割り当てる  
 -d : セマフォを削除する  
 -u : セマフォUNLOCKする  
 -h : 使い方を表示する  
 
-
+## 環境変数
+CHANNELCONFPATH : channel.cnfの場所をフルパスで定義する  未定義時はchtoolと同じディレクトリにchannel.cnfを置く  
+CHANNELCONFKEY  : IPC 共有メモリ、セマフォのキーを指定する 未定義時は 0x4649  
+例  
+export CHANNELCONFPATH=/opt/TV_app/config  
+export CHANNELCONFKEY=0x777777  
 
