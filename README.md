@@ -21,9 +21,9 @@ Linux用チューナーアプリケーションプログラムを直すことな
 4. チャンネル情報変更時はchtoolを使用しMirakurun channels.ymlを生成し所定のディレクトリに配置する
 
 ### chtool [option]
--c : channel.cnfを読み込み共有メモリを割り付けデータを展開する  
-　　既に割り付けられていてchannel.cnfの内容とサイズが異なる場合  
-　　削除して再割り当てする  
+-c : 共有メモリを新規割り付け、channel.cnfからデータを展開する  
+-l : 既に割り付けられている共有メモリにchannel.cnfからデータを展開し直す  
+　　channel.cnfの内容とサイズが異なる場合、共有メモリを削除して再割り当てする  
 -d : 共有メモリを削除する  
 -m : 共有メモリからMirakurun channels.yml フォーマットで出力する  
 -p : 共有メモリからVLC(SMPLAYER)プレイリストフォーマットで出力する  
